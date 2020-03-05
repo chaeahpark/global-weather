@@ -21,9 +21,11 @@ class PopulationBtn extends React.Component {
 
   render() {
     return (
-      <button className="tiny ui teal basic button" onClick={this.onBtnClick}>
-        Population
-      </button>
+      <div className="sortBtn">
+        <button className="mini ui teal basic button" onClick={this.onBtnClick}>
+          Population
+        </button>
+      </div>
     );
   }
 }

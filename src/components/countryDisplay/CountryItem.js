@@ -2,6 +2,8 @@ import React from 'react';
 import ReactAnimatedWeather from 'react-animated-weather';
 import openweathermap from '../../apis/openweathermap';
 import Modal from 'react-modal';
+import modalStyle from '../../styles/modalStyle';
+import '../../styles/countryItem.css';
 
 Modal.setAppElement('#root');
 
@@ -79,8 +81,12 @@ class CountryItem extends React.Component {
 
   renderWeather = () => {
     return (
-      <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal}>
-        <h2>The weather in {this.props.country.name}</h2>
+      <Modal
+        isOpen={this.state.showModal}
+        onRequestClose={this.closeModal}
+        style={modalStyle}
+      >
+        <h2 className="ui header">Weather in {this.props.country.name}</h2>
         <ReactAnimatedWeather
           icon={this.state.weatherData.icon}
           color={'black'}
@@ -94,8 +100,8 @@ class CountryItem extends React.Component {
     );
   };
 
-  render() {
-    const {
+  renderCountry = () => {
+    let {
       name,
       capital,
       languages,
@@ -103,21 +109,27 @@ class CountryItem extends React.Component {
       alpha2Code
     } = this.props.country;
 
+    population = population.toLocaleString();
+
     return (
-      <div>
-        <div className="ui card" onClick={this.onhandleClick}>
-          <div className="header">{name.toUpperCase()}</div>
+      <div onClick={this.onhandleClick}>
+        <div className="header">{name.toUpperCase()}</div>
+        <img
+          className="ui centered mini image"
+          src={`https://www.countryflags.io/${alpha2Code}/flat/64.png`}
+          alt={name}
+        />
+        <div className="description">Capital: {capital}</div>
+        <div className="description">Language: {languages[0]}</div>
+        <div className="description">Population: {population}</div>
+      </div>
+    );
+  };
 
-          <img
-            className="ui mini image"
-            src={`https://www.countryflags.io/${alpha2Code}/flat/64.png`}
-            alt={name}
-          />
-
-          <div className="description">Capital: {capital}</div>
-          <div className="description">Language: {languages[0]}</div>
-          <div className="description">Population: {population}</div>
-        </div>
+  render() {
+    return (
+      <div className="card">
+        {this.renderCountry()}
         <div>{this.renderWeather()}</div>
       </div>
     );

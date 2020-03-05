@@ -4,8 +4,8 @@ import CapitalBtn from './sortBtns/CapitalBtn';
 import CountryBtn from './sortBtns/CountryBtn';
 import PopulationBtn from './sortBtns/PopulationBtn';
 import CountryList from './countryDisplay/CountryList';
-
 import restcountries from '../apis/restcountries';
+import '../styles/app.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -179,26 +179,32 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <h1 className="ui header">
-          Hello <i className="fas fa-globe-asia"></i> World
+        <h1 className="ui center aligned header">
+          World <i className="fas fa-globe-asia"></i> Weather
         </h1>
-        <SearchBar
-          query={this.state.query}
-          handleQueryChange={this.handleQueryChange}
-        />
-        <CountryBtn
-          arrangeCountryAtoZ={this.arrangeCountryAtoZ}
-          arrangeCountryZtoA={this.arrangeCountryZtoA}
-        />
-        <CapitalBtn
-          arrangeCapitalAtoZ={this.arrangeCapitalAtoZ}
-          arrangeCapitalZtoA={this.arrangeCapitalZtoA}
-        />
-        <PopulationBtn
-          arrangePopulation0to9={this.arrangePopulation0to9}
-          arrangePopulation9to0={this.arrangePopulation9to0}
-        />
-        <div className="ui segment">
+
+        <div className="searchbar">
+          <SearchBar
+            query={this.state.query}
+            handleQueryChange={this.handleQueryChange}
+          />
+        </div>
+        <div className="sortBtns">
+          <div className="sortBtn">Sort by: </div>
+          <CountryBtn
+            arrangeCountryAtoZ={this.arrangeCountryAtoZ}
+            arrangeCountryZtoA={this.arrangeCountryZtoA}
+          />
+          <CapitalBtn
+            arrangeCapitalAtoZ={this.arrangeCapitalAtoZ}
+            arrangeCapitalZtoA={this.arrangeCapitalZtoA}
+          />
+          <PopulationBtn
+            arrangePopulation0to9={this.arrangePopulation0to9}
+            arrangePopulation9to0={this.arrangePopulation9to0}
+          />
+        </div>
+        <div className="countryList">
           <CountryList queriedCountries={this.state.queriedCountries} />
         </div>
       </div>
