@@ -7,15 +7,30 @@ import CountryList from './countryDisplay/CountryList';
 import restcountries from '../apis/restcountries';
 import '../styles/app.css';
 
+// Refactoring
+// 1. change the class component to functional one.
+// -----------------------------------------------
+// 2. States:
+// 2.1. queiredCountreis state is used
+//      in Components -> CountryList, CapitalBtn, CountryBtn, PopulationBtn
+// 2.2. countries state is to get queriedCountries
+// 2.3. query state is used to get queriedCountries
+// -----------------------------------------------
+// 3.Functions:
+// 3.1 App: getCountries,
+// 3.2 SearchBar: handleQueryChange, filterQueriedCountries(?)
+// 3.3 CountryBtn: arrangeCountryAtoZ, arrangeCountryZtoA
+// 3.4 CapitalBtn: arrangeCapitalAtoZ, arrangeCapitalZtoA
+// 3.5 Population: arrangePopulation0to9, arrangePopulation9to0
+// -----------------------------------------------
+// 4.CountryItem Components
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      countries: [],
-      query: '',
-      queriedCountries: []
-    };
-  }
+  state = {
+    countries: [],
+    query: '',
+    queriedCountries: []
+  };
 
   componentDidMount() {
     this.getCountries();
