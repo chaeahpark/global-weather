@@ -1,7 +1,7 @@
 import React from 'react';
+import Modal from 'react-modal';
 import ReactAnimatedWeather from 'react-animated-weather';
 import openweathermap from '../../apis/openweathermap';
-import Modal from 'react-modal';
 import modalStyle from '../../styles/modalStyle';
 import '../../styles/countryItem.css';
 
