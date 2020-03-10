@@ -41,8 +41,9 @@ class CountryItem extends React.Component {
       let weatherData = {
         icon: this._getIcon(weather[0].id),
         description: weather[0].description,
-        fahrenheit: main.temp,
-        celcius: this._toCelcius(main.temp)
+        kelvin: main.temp,
+        celcius: this._kelvinToCelcius(main.temp).toFixed(2),
+        fahrenheit: this._kelvinToFahrenheit(main.temp).toFixed(2)
       };
 
       this.setState({ weatherData: weatherData });
@@ -75,9 +76,16 @@ class CountryItem extends React.Component {
     }
   };
 
-  _toCelcius = f => {
-    let c = (5 / 9) * (f - 32);
-    return c.toFixed(2);
+  _kelvinToCelcius = k => {
+    if (k < 0) {
+      return 'below absolute zero (0 K)';
+    } else {
+      return k - 273.15;
+    }
+  };
+
+  _kelvinToFahrenheit = k => {
+    return (k - 273.15) * 1.8 + 32;
   };
 
   renderWeather = () => {
