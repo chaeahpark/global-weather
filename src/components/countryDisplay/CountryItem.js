@@ -41,8 +41,7 @@ class CountryItem extends React.Component {
       let weatherData = {
         icon: this._getIcon(weather[0].id),
         description: weather[0].description,
-        celsius: main.temp,
-        fahrenheit: this._toFahrenheit(main.temp)
+        fahrenheit: main.temp
       };
 
       this.setState({ weatherData: weatherData });
@@ -101,7 +100,7 @@ class CountryItem extends React.Component {
             />
             <div className="description">
               <p>{this.state.weatherData.description}</p>
-              <p>{this.state.weatherData.celsius}</p>
+              <p>{this.state.weatherData.fahrenheit}</p>
             </div>
           </div>
         </div>
