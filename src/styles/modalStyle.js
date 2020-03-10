@@ -1,9 +1,16 @@
 const modalStyle = {
   content: {
-    background: 'yellow'
+    background: 'white',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center'
   },
   overlay: {
-    background: 'grey'
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
   }
 };
 

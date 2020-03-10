@@ -86,16 +86,25 @@ class CountryItem extends React.Component {
         onRequestClose={this.closeModal}
         style={modalStyle}
       >
-        <h2 className="ui header">Weather in {this.props.country.name}</h2>
-        <ReactAnimatedWeather
-          icon={this.state.weatherData.icon}
-          color={'black'}
-        />
-        <p>{this.state.weatherData.description}</p>
-        <p>{this.state.weatherData.celsius}</p>
-        <button className="mini ui button negative" onClick={this.closeModal}>
-          X
-        </button>
+        <div className="ui item">
+          <button className="mini ui icon button" onClick={this.closeModal}>
+            <i className="close icon" />
+          </button>
+        </div>
+
+        <div className="ui card">
+          <div className="content">
+            <div className="header">Weather in {this.props.country.name}</div>
+            <ReactAnimatedWeather
+              icon={this.state.weatherData.icon}
+              color={'black'}
+            />
+            <div className="description">
+              <p>{this.state.weatherData.description}</p>
+              <p>{this.state.weatherData.celsius}</p>
+            </div>
+          </div>
+        </div>
       </Modal>
     );
   };
